@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kurinest.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="曹奶奶在coursera上的操作系统课程，因为怕演话剧（雾？）大学没有选这门课，结果现在还得重新捞起来，sigh~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统学习笔记">
+<meta property="og:url" content="http://kurinest.xyz/2020/04/27/os-learning-1/index.html">
+<meta property="og:site_name" content="KuriNest">
+<meta property="og:description" content="曹奶奶在coursera上的操作系统课程，因为怕演话剧（雾？）大学没有选这门课，结果现在还得重新捞起来，sigh~">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-26T21:29:59.000Z">
+<meta property="article:modified_time" content="2020-05-10T07:24:26.694Z">
+<meta property="article:author" content="Kurisute">
+<meta property="article:tag" content="Operating-System">
+<meta property="article:tag" content="Coursera">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://kurinest.xyz/2020/04/27/os-learning-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>操作系统学习笔记 | KuriNest</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KuriNest</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://kurinest.xyz/2020/04/27/os-learning-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kurisute">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KuriNest">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-26 21:29:59" itemprop="dateCreated datePublished" datetime="2020-04-26T21:29:59Z">2020-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-10 07:24:26" itemprop="dateModified" datetime="2020-05-10T07:24:26Z">2020-05-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning-Notes/" itemprop="url" rel="index"><span itemprop="name">Learning Notes</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>曹奶奶在coursera上的操作系统课程，因为怕演话剧（雾？）大学没有选这门课，结果现在还得重新捞起来，sigh~</p>
+<a id="more"></a>
+
+<h2 id="OS概述"><a href="#OS概述" class="headerlink" title="OS概述"></a>OS概述</h2><h4 id="OS的作用"><a href="#OS的作用" class="headerlink" title="OS的作用"></a>OS的作用</h4><ol>
+<li><p>资源管理功能：</p>
+<ul>
+<li>进程线程管理（CPU）</li>
+<li>存储管理</li>
+<li>文件管理</li>
+<li>设备管理</li>
+<li>用户接口</li>
+</ul>
+</li>
+<li><p>提供系统服务</p>
+</li>
+<li><p>拓展硬件机器</p>
+</li>
+</ol>
+<h4 id="OS特征"><a href="#OS特征" class="headerlink" title="OS特征"></a>OS特征</h4><ol>
+<li>并发(Concurrency)<br>并发vs并行(parallel)</li>
+<li>共享<br>互斥共享 &amp; 同时共享</li>
+<li>虚拟<br>分时 &amp; 分空间</li>
+<li>随机</li>
+</ol>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>批处理OS：用户程序，数据，作业说明书；相同流程处理</li>
+<li>SPOOLING技术（假脱机）：打印机</li>
+<li>分时OS：</li>
+<li>通用OS：分时优先，批处理在后</li>
+<li>实时OS：硬实时，软实时</li>
+<li>PC OS</li>
+<li>网络OS</li>
+<li>分布式OS</li>
+</ul>
+<h4 id="控制和状态寄存器"><a href="#控制和状态寄存器" class="headerlink" title="控制和状态寄存器"></a>控制和状态寄存器</h4><ul>
+<li>程序计数器PC，指令寄存器IR，程序状态字PSW</li>
+</ul>
+<h4 id="处理器状态"><a href="#处理器状态" class="headerlink" title="处理器状态"></a>处理器状态</h4><p>内核态，用户态</p>
+<p>用户到内核转换方法：中断，陷入，异常</p>
+<p>内核到用户：修改PSW</p>
+<h2 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h2><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">中断</td>
+<td align="left">异步</td>
+<td align="left">返回下一指令</td>
+</tr>
+<tr>
+<td align="left">陷入</td>
+<td align="left">同步</td>
+<td align="left">返回下一指令</td>
+</tr>
+<tr>
+<td align="left">故障</td>
+<td align="left">同步</td>
+<td align="left">返回当前指令</td>
+</tr>
+<tr>
+<td align="left">终止</td>
+<td align="left">同步</td>
+<td align="left">不返回</td>
+</tr>
+</tbody></table>
+<p>任务门，陷阱门，中断门，调用门</p>
+<p>中断类型码存入IDTR，根据IDTR查IDT，得到 <strong>段偏移</strong> ，根据条目中 <strong>段选择符</strong> 查找GDT，得到段描述符中 <strong>段基址</strong></p>
+<p>中断处理程序入口 = 段基址 concat 段偏移</p>
+<h4 id="系统调用（System-Call）"><a href="#系统调用（System-Call）" class="headerlink" title="系统调用（System Call）"></a>系统调用（System Call）</h4><p>中断异常机制</p>
+<p>陷入指令（INT）</p>
+<p>系统调用号和参数： <strong>系统调用号</strong> 在eax，<strong>参数</strong> 传到通用寄存器以及内存中</p>
+<p>系统调用表</p>
+<p>执行过程：</p>
+<ul>
+<li>中断/异常</li>
+<li>系统调用总入口：保存现场，保存参数，查系统调用表转移控制</li>
+<li>执行例程</li>
+<li>恢复控制</li>
+</ul>
+<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>进程控制块PCB</p>
+<h4 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h4><ul>
+<li>5状态模型<br>  创建，就绪，运行，终止，阻塞</li>
+<li>7状态模型<br>  创建，就绪，阻塞，推出，运行，就绪挂起，阻塞挂起</li>
+</ul>
+<h4 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h4><p>原语（primitive，原子操作 atomic action）：一次性完成，不能被打断</p>
+<p>上下文切换：</p>
+<ul>
+<li>运行时，硬件状态在CPU寄存器中</li>
+<li>不运行时，硬件状态在PCB中</li>
+</ul>
+<h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><ul>
+<li>用户级线程（linux）</li>
+<li>内核级线程（Win）</li>
+<li>混合型线程（Solaris）:创建在用户空间，调度在核心态</li>
+</ul>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><h4 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h4><p>经过中断、陷入从内核态回到用户态时</p>
+<h4 id="批处理系统"><a href="#批处理系统" class="headerlink" title="批处理系统"></a>批处理系统</h4><ul>
+<li>先来先到FIFO</li>
+<li>最短作业优先SJF</li>
+<li>最短剩余时间优先SRTN</li>
+<li>最高响应比优先HRRN<br> 响应比 R = 1+（等待时间/运行时间）</li>
+</ul>
+<h4 id="交互式系统"><a href="#交互式系统" class="headerlink" title="交互式系统"></a>交互式系统</h4><ul>
+<li>时间片轮转<br> plus:虚拟轮转法</li>
+<li>最高优先级调度算法<br> 优先级反转问题：设置优先级上限，优先级继承，使用中断禁止</li>
+</ul>
+<h4 id="多级反馈队列调度算法（5-3BSD）"><a href="#多级反馈队列调度算法（5-3BSD）" class="headerlink" title="多级反馈队列调度算法（5.3BSD）"></a>多级反馈队列调度算法（5.3BSD）</h4><p>多个就绪队列，分配不同长度时间片，时间片长度随级别降低而增长</p>
+<p>时间片轮转调度</p>
+<p>新进程进入第一级队列</p>
+<p>线程优先级提升（1-15级，可变优先级）:</p>
+<ul>
+<li>I/O操作完成（幅度由驱动程序决定）</li>
+<li>信号量或事件等待结束</li>
+<li>前台进程中线程完成一个等待操作</li>
+<li>窗口活动唤醒窗口线程</li>
+<li>发生饥饿现象（超过300始终间隔的线程，立即提升到15级,4倍时间配额，用完后恢复）</li>
+</ul>
+<p>##同步和互斥</p>
+<p>####进程互斥<br>各进程要共享使用临界资源（critical resource），产生竞争</p>
+<p>对临界资源实施操作的代码区域称为 <strong>临界区</strong> </p>
+<p>解决方案：<br>Dekker解法，Peterson解法<br>屏蔽中断，TSL（XCHG）指令</p>
+<h4 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h4><p>####信号量和PV操作<br>生产者和消费者问题<br>读着和写者问题（Linux中IPX协议）</p>
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><h4 id="管程monitor"><a href="#管程monitor" class="headerlink" title="管程monitor"></a>管程monitor</h4><p>是一个抽象数据类型<br>进程只能调用管程的过程来间接访问管程中数据</p>
+<p>互斥进入：由编译器保证<br>同步：设置条件变量和等待/唤醒操作</p>
+<h4 id="HOARE管程"><a href="#HOARE管程" class="headerlink" title="HOARE管程"></a>HOARE管程</h4><p>入口处设置等待队列<br>缺少资源的进程wait，在条件变量上等待（进入 <strong>c链</strong> 队尾）<br>提供资源的进程signal唤醒c链第一个等待者，自己进入 <strong>紧急等待队列</strong> 队尾（优先级高于入口）</p>
+<h4 id="MESA管程"><a href="#MESA管程" class="headerlink" title="MESA管程"></a>MESA管程</h4><p>缺少资源的进程wait，在条件变量上等待<br>提供资源的进程notify，自己继续进行，前一资源进入紧急队列<br>紧急队列中进程开始时，进行环境检查</p>
+<p>改进：使用broadcast激活所有在c链上等待的进程</p>
+<h4 id="Pthread"><a href="#Pthread" class="headerlink" title="Pthread"></a>Pthread</h4><h4 id="进程通信机制"><a href="#进程通信机制" class="headerlink" title="进程通信机制"></a>进程通信机制</h4><h5 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h5><p>发送进程 to 消息缓冲区 to 接收进程<br>send 和 receive</p>
+<h5 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h5><p>读者写者问题</p>
+<h5 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h5><p>字符流写入读出<br>FIFO</p>
+<h5 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h5><h5 id="远程过程调用"><a href="#远程过程调用" class="headerlink" title="远程过程调用"></a>远程过程调用</h5>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Operating-System/" rel="tag"># Operating-System</a>
+              <a href="/tags/Coursera/" rel="tag"># Coursera</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/23/my-first-blog/" rel="prev" title="My First Post">
+      <i class="fa fa-chevron-left"></i> My First Post
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/leet-note/" rel="next" title="leetcode 刷题笔记">
+      leetcode 刷题笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OS%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">OS概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OS%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text">OS的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OS%E7%89%B9%E5%BE%81"><span class="nav-number">1.0.2.</span> <span class="nav-text">OS特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.0.3.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%92%8C%E7%8A%B6%E6%80%81%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.0.4.</span> <span class="nav-text">控制和状态寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E7%8A%B6%E6%80%81"><span class="nav-number">1.0.5.</span> <span class="nav-text">处理器状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8"><span class="nav-number">2.</span> <span class="nav-text">中断和异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%EF%BC%88System-Call%EF%BC%89"><span class="nav-number">2.0.1.</span> <span class="nav-text">系统调用（System Call）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">进程和线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">3.0.1.</span> <span class="nav-text">进程状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">3.0.2.</span> <span class="nav-text">进程控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.0.3.</span> <span class="nav-text">线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">进程调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E6%9C%BA"><span class="nav-number">4.0.1.</span> <span class="nav-text">时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.0.2.</span> <span class="nav-text">批处理系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.0.3.</span> <span class="nav-text">交互式系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%885-3BSD%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">多级反馈队列调度算法（5.3BSD）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">4.0.5.</span> <span class="nav-text">进程同步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">5.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E7%A8%8Bmonitor"><span class="nav-number">5.0.1.</span> <span class="nav-text">管程monitor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HOARE%E7%AE%A1%E7%A8%8B"><span class="nav-number">5.0.2.</span> <span class="nav-text">HOARE管程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MESA%E7%AE%A1%E7%A8%8B"><span class="nav-number">5.0.3.</span> <span class="nav-text">MESA管程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pthread"><span class="nav-number">5.0.4.</span> <span class="nav-text">Pthread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">5.0.5.</span> <span class="nav-text">进程通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92"><span class="nav-number">5.0.5.1.</span> <span class="nav-text">消息传递</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="nav-number">5.0.5.2.</span> <span class="nav-text">共享内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">5.0.5.3.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">5.0.5.4.</span> <span class="nav-text">套接字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="nav-number">5.0.5.5.</span> <span class="nav-text">远程过程调用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kurisute</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kurisute" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kurisute" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kurisute.xie@gmail.com" title="E-Mail → mailto:kurisute.xie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kurisute</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
