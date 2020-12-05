@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"kurinest.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="This is my first article on the newly established blog called the KuriNest. Thanks to the experience shared by fangzh at the CSDN community, without which I couldn’t finish this exhausting work in onl">
+  <meta name="description" content="Leetcode practicing notes, using Python3.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="http://kurinest.xyz/2020/04/23/my-first-blog/index.html">
+<meta property="og:title" content="Leetcode Hot 100 Questions in Python (I)">
+<meta property="og:url" content="http://kurinest.xyz/2020/12/06/leetcode-python-1/index.html">
 <meta property="og:site_name" content="KuriNest">
-<meta property="og:description" content="This is my first article on the newly established blog called the KuriNest. Thanks to the experience shared by fangzh at the CSDN community, without which I couldn’t finish this exhausting work in onl">
+<meta property="og:description" content="Leetcode practicing notes, using Python3.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-22T18:22:24.000Z">
-<meta property="article:modified_time" content="2020-04-22T12:01:26.495Z">
+<meta property="article:published_time" content="2020-12-05T20:55:20.000Z">
+<meta property="article:modified_time" content="2020-12-05T13:00:16.895Z">
 <meta property="article:author" content="Kurisute">
-<meta property="article:tag" content="Learning">
-<meta property="article:tag" content="Internet">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://kurinest.xyz/2020/04/23/my-first-blog/">
+<link rel="canonical" href="http://kurinest.xyz/2020/12/06/leetcode-python-1/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>My First Post | KuriNest</title>
+  <title>Leetcode Hot 100 Questions in Python (I) | KuriNest</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://kurinest.xyz/2020/04/23/my-first-blog/">
+    <link itemprop="mainEntityOfPage" href="http://kurinest.xyz/2020/12/06/leetcode-python-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          My First Post
+          Leetcode Hot 100 Questions in Python (I)
         </h1>
 
         <div class="post-meta">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-22 18:22:24 / Modified: 12:01:26" itemprop="dateCreated datePublished" datetime="2020-04-22T18:22:24Z">2020-04-22</time>
+              <time title="Created: 2020-12-05 20:55:20 / Modified: 13:00:16" itemprop="dateCreated datePublished" datetime="2020-12-05T20:55:20Z">2020-12-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,7 +199,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Lifestyle/" itemprop="url" rel="index"><span itemprop="name">Lifestyle</span></a>
+                  <a href="/categories/Learning-Notes/" itemprop="url" rel="index"><span itemprop="name">Learning Notes</span></a>
                 </span>
             </span>
 
@@ -209,7 +209,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>179</span>
+              <span>605</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -228,7 +228,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>This is my first article on the newly established blog called the <strong>KuriNest</strong>. Thanks to the experience shared by <a target="_blank" rel="noopener" href="http://fangzh.top/">fangzh</a> at the CSDN community, without which I couldn’t finish this exhausting work in only a single day.</p>
+        <p>Leetcode practicing notes, using Python3.</p>
+<a id="more"></a>
+
+<h1 id="139-Word-Break"><a href="#139-Word-Break" class="headerlink" title="139. Word Break"></a>139. Word Break</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wordBreak</span>(<span class="params">self, s: <span class="built_in">str</span>, wordDict: List[<span class="built_in">str</span>]</span>) -&gt; bool:</span></span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        dp = [<span class="literal">False</span>]*(n+<span class="number">1</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">True</span>; </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span>(dp[i] <span class="keyword">and</span> (s[i:j] <span class="keyword">in</span> wordDict)):</span><br><span class="line">                    dp[j] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="141-Linked-List-Cycle"><a href="#141-Linked-List-Cycle" class="headerlink" title="141. Linked List Cycle"></a>141. Linked List Cycle</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasCycle</span>(<span class="params">self, head: ListNode</span>) -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        fast = head.<span class="built_in">next</span></span><br><span class="line">        low = head</span><br><span class="line">        <span class="keyword">while</span>(fast != low):</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">not</span> fast <span class="keyword">or</span> <span class="keyword">not</span> fast.<span class="built_in">next</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            low = low.<span class="built_in">next</span>;</span><br><span class="line">            fast = fast.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -238,8 +244,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Learning/" rel="tag"># Learning</a>
-              <a href="/tags/Internet/" rel="tag"># Internet</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
           </div>
 
         
@@ -247,11 +253,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/04/27/os-learning-1/" rel="next" title="操作系统学习笔记">
-      操作系统学习笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/04/python-learning/" rel="prev" title="Python Learning Notes">
+      <i class="fa fa-chevron-left"></i> Python Learning Notes
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -310,6 +316,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#139-Word-Break"><span class="nav-number">1.</span> <span class="nav-text">139. Word Break</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#141-Linked-List-Cycle"><span class="nav-number">2.</span> <span class="nav-text">141. Linked List Cycle</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
