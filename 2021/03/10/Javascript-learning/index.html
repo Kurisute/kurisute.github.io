@@ -28,7 +28,7 @@
 <meta property="og:description" content="Javascript learning notes, only including basic Javascript.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-09T17:02:50.000Z">
-<meta property="article:modified_time" content="2021-03-09T10:06:39.341Z">
+<meta property="article:modified_time" content="2021-03-09T12:10:09.271Z">
 <meta property="article:author" content="Kurisute">
 <meta property="article:tag" content="Javascript">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-09 17:02:50 / Modified: 10:06:39" itemprop="dateCreated datePublished" datetime="2021-03-09T17:02:50Z">2021-03-09</time>
+              <time title="Created: 2021-03-09 17:02:50 / Modified: 12:10:09" itemprop="dateCreated datePublished" datetime="2021-03-09T17:02:50Z">2021-03-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +208,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>264</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -233,7 +233,23 @@
 <h1 id="1-Output"><a href="#1-Output" class="headerlink" title="1.Output"></a>1.Output</h1><p>There are 4 ways to get output form JS:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert(<span class="string">&quot;Hello world&quot;</span>);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;Hello world&quot;</span>);</span><br><span class="line"><span class="built_in">document</span>.getElementById.(<span class="string">&quot;XXX&quot;</span>).innerHTML = <span class="number">5</span> + <span class="number">6</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>#</p>
+<h1 id="2-Function"><a href="#2-Function" class="headerlink" title="2.Function"></a>2.Function</h1><p>A Sample:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionSample</span>(<span class="params">arg1, arg2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg1 * arg2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Object"><a href="#3-Object" class="headerlink" title="3.Object"></a>3.Object</h1><h2 id="A-Sample"><a href="#A-Sample" class="headerlink" title="A Sample:"></a>A Sample:</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = &#123;</span><br><span class="line">    type:<span class="string">&quot;porsche&quot;</span>;</span><br><span class="line">    color:<span class="string">&quot;grey&quot;</span>;</span><br><span class="line">    model:<span class="string">&quot;911&quot;</span>;</span><br><span class="line">    sayType: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="访问属性和方法"><a href="#访问属性和方法" class="headerlink" title="访问属性和方法"></a>访问属性和方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car.type;</span><br><span class="line">car[<span class="string">&quot;type&quot;</span>];</span><br><span class="line">type = car.sayType();</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-String"><a href="#4-String" class="headerlink" title="4.String"></a>4.String</h1><h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> txt = <span class="string">&quot;I am a string!&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.length);  <span class="comment">//14</span></span><br></pre></td></tr></table></figure>
+<h2 id="查找字符（串）位置"><a href="#查找字符（串）位置" class="headerlink" title="查找字符（串）位置"></a>查找字符（串）位置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(txt.indexOf(<span class="string">&quot;string&quot;</span>));  <span class="comment">//7</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.lastIndexOf(<span class="string">&quot;a&quot;</span>)); <span class="comment">//5</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.search(<span class="string">&quot;string&quot;</span>)); <span class="comment">//7</span></span><br></pre></td></tr></table></figure>
+<p>其中indexOf()和search()不同在于：</p>
+<ul>
+<li>indexOf(string, begin_pos)第二个参数是开始查找位置</li>
+<li>search(reg_expression)参数可以是正则表达式</li>
+</ul>
+<h2 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice(start, end) &#x2F;&#x2F;可以是负索引（倒着提取）</span><br><span class="line">substring(start, end) &#x2F;&#x2F;不可以是负索引</span><br><span class="line">substr(start, length)</span><br></pre></td></tr></table></figure>
+
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">txt.replace(<span class="string">&quot;string&quot;</span>,<span class="string">&quot;modified&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> txt2 = <span class="string">&quot;Another string!&quot;</span>;</span><br><span class="line">txt.concat(<span class="string">&quot; &quot;</span>,txt2);</span><br><span class="line"><span class="comment">//等价于 txt + &quot; &quot; + txt2;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -314,7 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Output"><span class="nav-number">1.</span> <span class="nav-text">1.Output</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Output"><span class="nav-number">1.</span> <span class="nav-text">1.Output</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Function"><span class="nav-number">2.</span> <span class="nav-text">2.Function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Object"><span class="nav-number">3.</span> <span class="nav-text">3.Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Sample"><span class="nav-number">3.1.</span> <span class="nav-text">A Sample:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">访问属性和方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-String"><span class="nav-number">4.</span> <span class="nav-text">4.String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample"><span class="nav-number">4.1.</span> <span class="nav-text">Sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6%EF%BC%88%E4%B8%B2%EF%BC%89%E4%BD%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">查找字符（串）位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.3.</span> <span class="nav-text">提取字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2"><span class="nav-number">4.4.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.5.</span> <span class="nav-text">连接</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,12 +403,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">29k</span>
+    <span title="Symbols count total">30k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">26 mins.</span>
+    <span title="Reading time total">27 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
